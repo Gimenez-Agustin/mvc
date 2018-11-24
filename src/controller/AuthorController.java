@@ -44,5 +44,9 @@ public class AuthorController {
         }
         System.out.println("   ***         ***   ");
     }
+    
+    public static Author getAuthorById(int id){
+        return MVC.authors.get(id);
+    }
 
 }

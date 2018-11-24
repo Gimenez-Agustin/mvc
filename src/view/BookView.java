@@ -3,8 +3,6 @@ package view;
 import controller.AuthorController;
 import controller.BookController;
 import java.util.Scanner;
-import model.Author;
-import mvc.MVC;
 
 public class BookView {
 
@@ -31,17 +29,15 @@ public class BookView {
                     System.out.println("Please type the subtitle of the book");
                     String subtitle = scan.nextLine();
                     System.out.println("Please select the author");
-                    Author author;
                     boolean checkAdd = false;
                     while (!checkAdd) {
                         try {
                             AuthorController.displayAuthors();
                             System.out.println("Please type index of the Author");
-                            int ind = scan.nextInt();
-                            ind--;
+                            int id = scan.nextInt();
+                            id--;
                             checkAdd = true;
-                            author = MVC.authors.get(ind);
-                            System.out.println(BookController.addBook(BookController.createBook(title, subtitle,author)));
+                            System.out.println(BookController.addBook(BookController.createBook(title, subtitle,AuthorController.getAuthorById(id))));
                         } catch (Exception ex) {
                             System.out.println("Please type a correct number");
                         }
@@ -61,7 +57,7 @@ public class BookView {
                             int ind = scan.nextInt();
                             ind--;
                             checkDelete = true;
-                            System.out.println(BookController.delteBook(MVC.books.get(ind)));
+                            System.out.println(BookController.delteBook(BookController.getBookById(ind)));
                         } catch (Exception ex) {
                             System.out.println("Please type a correct number");
                         }

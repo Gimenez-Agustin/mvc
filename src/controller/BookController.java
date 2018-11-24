@@ -48,4 +48,8 @@ public class BookController {
         System.out.println("   ***       ***   ");
     }
     
+    public static Book getBookById(int id){
+        return MVC.books.get(id);
+    }
+    
 }

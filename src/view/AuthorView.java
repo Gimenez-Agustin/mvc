@@ -2,7 +2,6 @@ package view;
 
 import controller.AuthorController;
 import java.util.Scanner;
-import mvc.MVC;
 
 public class AuthorView {
 
@@ -40,10 +39,10 @@ public class AuthorView {
                         try{
                         AuthorController.displayAuthors();
                         System.out.println("Please type index of the Author to delete");
-                        int ind = scan.nextInt();
-                        ind--;
+                        int id = scan.nextInt();
+                        id--;
                         check = true;
-                            System.out.println(AuthorController.delteAuthor(MVC.authors.get(ind)));
+                            System.out.println(AuthorController.delteAuthor(AuthorController.getAuthorById(id)));
                         }catch(Exception ex){
                             System.out.println("Please type a correct number");
                         }
